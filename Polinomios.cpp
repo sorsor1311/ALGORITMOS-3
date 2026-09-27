@@ -235,24 +235,53 @@ int main()
     float coeficiente2 = 0;
     int exponente = 0;
     int exponente2 = 0;
-    for(int i = 0; i < 5; i++)
+    for (int i = 0; i < 5; i++)
     {
         cout << "Ingrese el coeficiente del termino: ";
         cin >> coeficiente;
+
+        if (coeficiente == 0)
+        {
+            cout << "El coeficiente no puede ser cero. Intente nuevamente." << endl;
+            i--;
+            continue;
+        }
+
         cout << "Ingrese el exponente del termino: ";
         cin >> exponente;
+        
+        if (exponente == 0){
+            coeficiente = 1;
+        }else{
+            coeficiente = coeficiente;
+        }
+
         nodo = insertarTermino(nodo, coeficiente, exponente);
     }
 
-    cout << "\nPolinomio 1: "; 
+    cout << "\nPolinomio 1: ";
     imprimirPolinomio(nodo);
 
-    for(int i = 0; i < 5; i++)
+    for (int i = 0; i < 5; i++)
     {
         cout << "Ingrese el coeficiente del termino: ";
         cin >> coeficiente2;
+
+        if (coeficiente2 == 0){
+            cout << "El coeficiente no puede ser cero. Intente nuevamente." << endl;
+            i--;
+            continue;
+        }
+
         cout << "Ingrese el exponente del termino: ";
         cin >> exponente2;
+
+        if (exponente2 == 0){
+            coeficiente2 = 1;
+        }else{
+            coeficiente2 = coeficiente2;
+        }
+
         nodo2 = insertarTermino(nodo2, coeficiente2, exponente2);
     }
     cout << "\nPolinomio 2: ";
@@ -262,7 +291,7 @@ int main()
     cout << "\nPolinomio 3: ";
     imprimirPolinomio(sumarPolinomios(nodo, nodo2));
 
-    cout<< "Liberar polinomios de memoria..." << endl;
+    cout << "Liberar polinomios de memoria..." << endl;
     int liberar = 0;
 
     liberar = destruirPolinomio(nodo);
